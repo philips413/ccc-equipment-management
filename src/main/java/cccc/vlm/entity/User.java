@@ -1,5 +1,6 @@
 package cccc.vlm.entity;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -17,12 +18,14 @@ public class User {
     private String name;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @ColumnDefault("3")
     private int level;
 
     @Column(nullable = false, columnDefinition = "varchar(256)")
     private String profileImage;
 
     @Column(nullable = false, columnDefinition = "varchar(100)")
+    @ColumnDefault("kakao")
     private String loginPlatform;
 
     @Column(nullable = false, columnDefinition = "varchar(512)")
@@ -32,6 +35,7 @@ public class User {
     private String email;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned" )
+    @ColumnDefault("2")
     private int status;
 
     @Column(nullable = false)

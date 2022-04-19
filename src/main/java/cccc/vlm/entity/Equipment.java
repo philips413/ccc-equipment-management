@@ -41,5 +41,6 @@ public class Equipment {
     private String createdAt;
 
     @Column(nullable = false)
+    @ColumnDefault("1")
     private int createdId;
 }
