@@ -13,7 +13,7 @@ public class InsertEquipmentRequest implements RequestTemplate {
 
     private String name;
 
-    private String category;
+    private Integer category;
 
     private String description;
 
@@ -23,7 +23,7 @@ public class InsertEquipmentRequest implements RequestTemplate {
 
     private Integer maxUseQty;
 
-    private String minUseQty;
+    private Integer minUseQty;
 
     private String createdId;
 
@@ -31,7 +31,7 @@ public class InsertEquipmentRequest implements RequestTemplate {
     public boolean verify() {
         if (StringUtils.isBlank(this.name)) {
             throw new InvalidParameterException();
-        } else if (StringUtils.isBlank(this.category)) {
+        } else if (this.category == null || this.category <= 0) {
             throw new InvalidParameterException();
         } else if (this.qty == null || this.qty <= 0) {
             throw new IllegalArgumentException();

@@ -1,6 +1,7 @@
 package cccc.vlm.service;
 
 
+import cccc.vlm.entity.Equipment;
 import cccc.vlm.payload.request.InsertEquipmentRequest;
 import cccc.vlm.payload.response.EquipmentResponse;
 import cccc.vlm.repository.EquipmentRepository;
@@ -17,6 +18,15 @@ public class EquipmentService {
 
     @Transactional
     public EquipmentResponse insertEquipment(InsertEquipmentRequest request) {
+        Equipment equipmentBuild = Equipment.builder()
+                .name(request.getName())
+                .category(request.getCategory())
+                .description(request.getDescription())
+                .qty(request.getQty())
+                .maxUseQty(request.getMaxUseQty())
+                .minUseQty(request.getMinUseQty())
+                .build();
+        equipmentRepository.save(equipmentBuild);
         return null;
     }
 }

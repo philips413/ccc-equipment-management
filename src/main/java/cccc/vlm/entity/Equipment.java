@@ -1,8 +1,7 @@
 package cccc.vlm.entity;
 
-import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -10,7 +9,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 public class Equipment{
 
     @Id
@@ -33,13 +32,13 @@ public class Equipment{
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
     @ColumnDefault("1")
-    private String qty;
+    private Integer qty;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    private String maxUseQty;
+    private Integer maxUseQty;
 
     @Column(nullable = true, columnDefinition = "int(10) unsigned")
-    private String minUseQty;
+    private Integer minUseQty;
 
     @Column(nullable = false)
     @CreatedDate
@@ -48,4 +47,8 @@ public class Equipment{
     @Column(nullable = false)
     @ColumnDefault("1")
     private int createdId;
+
+    public Equipment() {
+
+    }
 }
