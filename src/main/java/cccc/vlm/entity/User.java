@@ -25,7 +25,7 @@ public class User {
     private String profileImage;
 
     @Column(nullable = false, columnDefinition = "varchar(100)")
-    @ColumnDefault("kakao")
+    @ColumnDefault("'kakao'")
     private String loginPlatform;
 
     @Column(nullable = false, columnDefinition = "varchar(512)")

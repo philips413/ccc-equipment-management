@@ -10,3 +10,11 @@ spring:
     password:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger
+server:
+  servlet:
+    context-path: /v1
