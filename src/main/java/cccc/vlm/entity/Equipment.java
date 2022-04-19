@@ -1,12 +1,18 @@
 package cccc.vlm.entity;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 
+@Data
 @Entity
-public class Equipment {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@MappedSuperclass
+public class Equipment{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

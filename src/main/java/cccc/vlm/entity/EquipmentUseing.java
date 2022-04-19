@@ -1,12 +1,17 @@
 package cccc.vlm.entity;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Data
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EquipmentUseing {
 
     @Id
