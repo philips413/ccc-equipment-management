@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@MappedSuperclass
 public class Equipment{
 
     @Id
