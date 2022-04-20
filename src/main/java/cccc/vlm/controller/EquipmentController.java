@@ -15,7 +15,7 @@ public class EquipmentController {
     @Autowired
     private EquipmentService equipmentService;
 
-    @PostMapping("/insert")
+    @PostMapping
     public EquipmentResponse insertEquipment(@RequestBody InsertEquipmentRequest request) {
         request.verify();
         EquipmentResponse equipmentResponse = equipmentService.insertEquipment(request);

@@ -1,6 +1,5 @@
 package cccc.vlm.payload.request;
 
-import cccc.vlm.payload.RequestTemplate;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

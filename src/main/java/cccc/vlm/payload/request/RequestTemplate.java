@@ -1,4 +1,4 @@
-package cccc.vlm.payload;
+package cccc.vlm.payload.request;
 
 public interface RequestTemplate{
 

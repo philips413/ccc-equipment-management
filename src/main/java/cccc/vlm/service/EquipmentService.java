@@ -33,9 +33,7 @@ public class EquipmentService {
                 .minUseQty(request.getMinUseQty())
                 .build();
         Equipment saveEquipment = equipmentRepository.save(equipment);
-
         EquipmentResponse response = modelMapper.map(saveEquipment, EquipmentResponse.class);
-
         return response;
     }
 
@@ -47,6 +45,7 @@ public class EquipmentService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public EquipmentResponse updateEquipment(Integer equipmentId, InsertEquipmentRequest request) throws NoSuchMethodException {
 
         Equipment equipment = equipmentRepository.findById(equipmentId).get();
