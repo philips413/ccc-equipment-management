@@ -31,29 +31,36 @@ public class User {
     @Column(nullable = false, columnDefinition = "varchar(128)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    @ColumnDefault("3")
+    @Column(nullable = true, columnDefinition = "int(10) unsigned")
     private Integer level;
 
-    @Column(nullable = false, columnDefinition = "varchar(256)")
+    @Column(nullable = true, columnDefinition = "varchar(256)")
     private String profileImage;
 
-    @Column(nullable = false, columnDefinition = "varchar(100)")
-    @ColumnDefault("'kakao'")
+    @Column(nullable = true, columnDefinition = "varchar(100)")
     private String loginPlatform;
 
-    @Column(nullable = false, columnDefinition = "varchar(512)")
+    @Column(nullable = true, columnDefinition = "varchar(512)")
     private String platformUserId;
 
-    @Column(nullable = false, columnDefinition = "varchar(128)")
+    @Column(nullable = true, columnDefinition = "varchar(128)")
     private String email;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned" )
-    @ColumnDefault("2")
+    @Column(nullable = true, columnDefinition = "int(10) unsigned" )
     private Integer status;
 
     @CreatedDate
     private LocalDateTime createdAt;
+
+    @PrePersist
+    public void PrePersist() {
+        if(this.status == null) {
+            this.status = 2;
+        }
+        if (this.level == null) {
+            this.level = 3;
+        }
+    }
 
     @Builder(builderMethodName = "byUserBuilder")
     public User(String name, String nickName, String password, Integer level, String profileImage, String loginPlatform, String platformUserId, String email, Integer status) {

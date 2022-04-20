@@ -8,7 +8,7 @@ import java.security.InvalidParameterException;
 
 @Data
 @Builder
-public class InsertEquipmentRequest implements RequestTemplate {
+public class UpdateEquipmentRequest implements RequestTemplate{
 
     private String name;
 

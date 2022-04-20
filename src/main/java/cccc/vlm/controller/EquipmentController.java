@@ -1,6 +1,7 @@
 package cccc.vlm.controller;
 
 import cccc.vlm.payload.request.InsertEquipmentRequest;
+import cccc.vlm.payload.request.UpdateEquipmentRequest;
 import cccc.vlm.payload.response.EquipmentResponse;
 import cccc.vlm.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class EquipmentController {
     }
 
     @PatchMapping("/{equipmentId}")
-    public EquipmentResponse updateEquipment(@PathVariable("equipmentId") Integer equipmentId, InsertEquipmentRequest request) throws NoSuchMethodException {
+    public EquipmentResponse updateEquipment(@PathVariable("equipmentId") Integer equipmentId, UpdateEquipmentRequest request) throws NoSuchMethodException {
         request.verify();
         EquipmentResponse response = equipmentService.updateEquipment(equipmentId, request);
         return response;

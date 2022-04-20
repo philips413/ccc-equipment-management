@@ -3,8 +3,10 @@ package cccc.vlm.service;
 
 import cccc.vlm.entity.Equipment;
 import cccc.vlm.payload.request.InsertEquipmentRequest;
+import cccc.vlm.payload.request.UpdateEquipmentRequest;
 import cccc.vlm.payload.response.EquipmentResponse;
 import cccc.vlm.repository.EquipmentRepository;
+import org.hibernate.persister.spi.UnknownPersisterException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +48,7 @@ public class EquipmentService {
     }
 
     @Transactional
-    public EquipmentResponse updateEquipment(Integer equipmentId, InsertEquipmentRequest request) throws NoSuchMethodException {
+    public EquipmentResponse updateEquipment(Integer equipmentId, UpdateEquipmentRequest request) throws NoSuchMethodException {
 
         Equipment equipment = equipmentRepository.findById(equipmentId).get();
         equipment.setName(request.getName());
