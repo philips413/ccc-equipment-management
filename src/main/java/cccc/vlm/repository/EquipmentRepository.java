@@ -7,4 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @DynamicInsert
-public interface EquipmentRepository extends JpaRepository<Equipment, Long> { }
+public interface EquipmentRepository extends JpaRepository<Equipment, Integer> { }

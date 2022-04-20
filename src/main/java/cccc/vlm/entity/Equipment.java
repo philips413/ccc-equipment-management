@@ -1,15 +1,20 @@
 package cccc.vlm.entity;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 public class Equipment{
 
     @Id
@@ -27,11 +32,9 @@ public class Equipment{
     private String description;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    @ColumnDefault("1")
     private int status;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    @ColumnDefault("1")
     private Integer qty;
 
     @Column(nullable = false, columnDefinition = "int(10) unsigned")
@@ -40,15 +43,29 @@ public class Equipment{
     @Column(nullable = true, columnDefinition = "int(10) unsigned")
     private Integer minUseQty;
 
-    @Column(nullable = false)
     @CreatedDate
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false)
     @ColumnDefault("1")
     private int createdId;
 
-    public Equipment() {
-
+    @Builder(builderMethodName = "byInsertEquipmentBuilder")
+    public Equipment(String name, Integer category, String description, Integer qty, Integer maxUseQty, Integer minUseQty) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.qty = qty;
+        this.status = 1;
+        // 선택사항
+        this.maxUseQty = maxUseQty;
+        if (maxUseQty == null) {
+            this.maxUseQty = qty;
+        }
+        // 선택사항
+        this.minUseQty = minUseQty;
+        if (minUseQty == null) {
+            this.minUseQty = qty;
+        }
     }
 }

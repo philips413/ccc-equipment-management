@@ -11,21 +11,18 @@ import java.security.InvalidParameterException;
 @Builder
 public class InsertEquipmentRequest implements RequestTemplate {
 
+    private Integer equipmentId;
     private String name;
 
     private Integer category;
 
     private String description;
 
-    private String status;
-
     private Integer qty;
 
     private Integer maxUseQty;
 
     private Integer minUseQty;
-
-    private String createdId;
 
     @Override
     public boolean verify() {
@@ -34,8 +31,6 @@ public class InsertEquipmentRequest implements RequestTemplate {
         } else if (this.category == null || this.category <= 0) {
             throw new InvalidParameterException();
         } else if (this.qty == null || this.qty <= 0) {
-            throw new IllegalArgumentException();
-        } else if (this.maxUseQty == null || this.maxUseQty <= 0) {
             throw new IllegalArgumentException();
         }
         return true;
