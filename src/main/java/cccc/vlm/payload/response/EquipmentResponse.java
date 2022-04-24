@@ -1,6 +1,5 @@
 package cccc.vlm.payload.response;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
