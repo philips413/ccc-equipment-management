@@ -1,10 +1,14 @@
 package cccc.vlm.payload.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 @Data
-public class InsertCategoryRequest implements RequestTemplate {
+@NoArgsConstructor
+@AllArgsConstructor
+public class InsertCategoryRequest implements RequestTemplate{
 
     private String categoryName;
 
