@@ -3,9 +3,7 @@ package cccc.vlm.payload.response;
 import lombok.Data;
 
 @Data
-public class UserResponse {
-
-    private int userSysId;
+public class LoginResponse {
 
     private String userId;
 
@@ -13,10 +11,12 @@ public class UserResponse {
 
     private String nickName;
 
-    private String email;
+    private String accessToken;
 
-    private String password;
+    private String refreshToken;
 
-    private String createdAt;
+    private String level;
+
+    private String status;
 
 }
