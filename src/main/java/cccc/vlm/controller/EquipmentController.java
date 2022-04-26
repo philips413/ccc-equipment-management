@@ -5,6 +5,7 @@ import cccc.vlm.payload.request.UpdateEquipmentRequest;
 import cccc.vlm.payload.response.EquipmentResponse;
 import cccc.vlm.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class EquipmentController {
     @Autowired
     private EquipmentService equipmentService;
 
-    @PostMapping
-    public EquipmentResponse insertEquipment(@RequestBody InsertEquipmentRequest request) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public EquipmentResponse insertEquipment(InsertEquipmentRequest request) {
         request.verify();
         EquipmentResponse equipmentResponse = equipmentService.insertEquipment(request);
         return equipmentResponse;

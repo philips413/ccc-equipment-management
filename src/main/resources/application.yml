@@ -16,6 +16,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 1024KB
 springdoc:
   api-docs:
     enabled: true

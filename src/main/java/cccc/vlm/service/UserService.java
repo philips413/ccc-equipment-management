@@ -27,9 +27,9 @@ public class UserService {
     public UserResponse insertUser(InsertUserRequest request) {
         User user = User.byUserBuilder()
                         .name(request.getName())
+                        .userId(request.getUserId())
                         .password(request.getPassword())
                         .nickName(request.getNickName())
-                        .email(request.getEmail())
                         .build();
         User userEntity = userRepository.save(user);
 
@@ -48,7 +48,6 @@ public class UserService {
         User userEntity = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
         userEntity.setName(request.getName());
         userEntity.setNickName(request.getNickName());
-        userEntity.setEmail(request.getEmail());
 
         User saveUser = userRepository.save(userEntity);
 

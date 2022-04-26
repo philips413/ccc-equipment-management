@@ -12,17 +12,21 @@ public class InsertUserRequest implements RequestTemplate{
 
     private String nickName;
 
+    private String userId;
+
     private String password;
 
-    private String email;
-
     public boolean verify() {
-        if (StringUtils.isBlank(this.name)) {
+        if (StringUtils.isBlank(getName())) {
             throw new IllegalArgumentException();
-        } else if (StringUtils.isBlank(this.password)) {
+        } else if (StringUtils.isBlank(getUserId())) {
             throw new IllegalArgumentException();
-        } else if (StringUtils.isBlank(this.email)) {
+        } else if (StringUtils.isBlank(getPassword())) {
             throw new IllegalArgumentException();
+        }
+
+        if (StringUtils.isBlank(getNickName())) {
+            setNickName(getName());
         }
         return true;
     }
