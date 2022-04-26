@@ -7,6 +7,7 @@ import cccc.vlm.payload.request.UpdateUserRequest;
 import cccc.vlm.payload.response.UserResponse;
 import cccc.vlm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public UserResponse insertUser(@RequestBody InsertUserRequest request) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public UserResponse insertUser(InsertUserRequest request) {
         request.verify();
         UserResponse userResponse = userService.insertUser(request);
         return userResponse;
