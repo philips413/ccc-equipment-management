@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "Users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int(10) unsigned")
-    private Integer userSysId;
+    private int userSysId;
 
     @Column(nullable = false, columnDefinition = "varchar(20)")
     private String name;
@@ -34,27 +34,18 @@ public class User {
     @Column(nullable = false, columnDefinition = "varchar(128)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    private Integer level;
+    @ColumnDefault("3")
+    private int level;
 
     @Column(nullable = true, columnDefinition = "varchar(256)")
     private String profileImage;
 
-    @Column(nullable = true, columnDefinition = "int(10) unsigned" )
-    private Integer status;
+    @ColumnDefault("2")
+    private int status;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @PrePersist
-    public void PrePersist() {
-        if(this.status == null) {
-            this.status = 2;
-        }
-        if (this.level == null) {
-            this.level = 3;
-        }
-    }
 
     @Builder(builderMethodName = "byUserBuilder")
     public User(String name, String nickName, String userId, String password) {

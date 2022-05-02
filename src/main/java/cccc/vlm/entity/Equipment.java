@@ -19,29 +19,28 @@ public class Equipment{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int(10) unsigned not null")
     private int equipmentId;
 
-    @Column(nullable = false, columnDefinition ="varchar(128) not null")
+    @Column(nullable = false, columnDefinition ="varchar(128)")
     private String name;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int category;
 
     @Column(nullable = true, columnDefinition = "varchar(1024)")
     private String description;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int status;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    private Integer qty;
+    @Column(nullable = false)
+    private int qty;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
-    private Integer maxUseQty;
+    @Column(nullable = false)
+    private int maxUseQty;
 
-    @Column(nullable = true, columnDefinition = "int(10) unsigned")
-    private Integer minUseQty;
+    @Column(nullable = true)
+    private int minUseQty;
 
     @CreatedDate
     private LocalDateTime createdAt;

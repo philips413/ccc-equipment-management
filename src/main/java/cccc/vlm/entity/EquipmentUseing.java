@@ -18,22 +18,22 @@ public class EquipmentUseing {
     @Column(nullable = false, columnDefinition = "varchar(128)")
     private String equipmentSerialId;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int userId;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int equipmentId;
 
     @Column(nullable = false, columnDefinition = "varchar(128)")
     private String name;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int category;
 
     @Column(nullable = false, columnDefinition = "varchar(1024)")
     private String propose;
 
-    @Column(nullable = false, columnDefinition = "int(10) unsigned")
+    @Column(nullable = false)
     private int qty;
 
     @Column(nullable = true, columnDefinition = "varchar(128)")
