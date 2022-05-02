@@ -39,9 +39,12 @@ public class EquipmentManagerService {
 
         EquipmentIn saveEquipment = equipmentInRepository.save(builderEquipment);
 
-        ApplyEquipmentResponse map = modelMapper.map(saveEquipment, ApplyEquipmentResponse.class);
-
-        return map;
+        return ApplyEquipmentResponse.builder()
+                .equipmentSerialId(saveEquipment.getEquipmentSerialId())
+                .equipmentId(currentEquipment.getEquipmentId())
+                .equipmentName(currentEquipment.getName())
+                .qty(request.getQty())
+                .build();
     }
 
 }
