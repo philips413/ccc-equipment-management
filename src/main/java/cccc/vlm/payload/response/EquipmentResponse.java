@@ -2,6 +2,8 @@ package cccc.vlm.payload.response;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class EquipmentResponse {
 
@@ -17,12 +19,8 @@ public class EquipmentResponse {
 
     private int qty;
 
-    private int maxUseQty;
+    private int useQty;
 
-    private int minUseQty;
-
-    private String createdAt;
-
-    private int createdId;
+    private LocalDateTime createdAt;
 
 }

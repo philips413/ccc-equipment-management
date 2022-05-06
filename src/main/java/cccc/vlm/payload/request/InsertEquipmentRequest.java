@@ -1,13 +1,17 @@
 package cccc.vlm.payload.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.security.InvalidParameterException;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class InsertEquipmentRequest implements RequestTemplate {
 
     private String name;
@@ -17,10 +21,6 @@ public class InsertEquipmentRequest implements RequestTemplate {
     private String description;
 
     private Integer qty;
-
-    private Integer maxUseQty;
-
-    private Integer minUseQty;
 
     @Override
     public boolean verify() {

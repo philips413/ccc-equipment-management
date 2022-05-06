@@ -26,6 +26,10 @@ public class Category {
     @Column(nullable = false, columnDefinition ="varchar(128)")
     private String categoryName;
 
+    @Column(nullable = false)
+    @ColumnDefault("1")
+    private int status;
+
     @Column(nullable = true, columnDefinition ="varchar(1024)")
     private String description;
 

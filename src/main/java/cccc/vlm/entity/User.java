@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -37,15 +38,14 @@ public class User {
     @ColumnDefault("3")
     private int level;
 
-    @Column(nullable = true, columnDefinition = "varchar(256)")
-    private String profileImage;
-
     @ColumnDefault("2")
     private int status;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @Builder(builderMethodName = "byUserBuilder")
     public User(String name, String nickName, String userId, String password) {

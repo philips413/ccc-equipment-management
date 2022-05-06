@@ -29,6 +29,11 @@ public class EquipmentController {
         return equipmentService.getList();
     }
 
+    @GetMapping("/list/current")
+    public List<EquipmentResponse> getCurrentList() {
+        return equipmentService.getCurrentList();
+    }
+
     @PatchMapping("/{equipmentId}")
     public EquipmentResponse updateEquipment(@PathVariable("equipmentId") Integer equipmentId, UpdateEquipmentRequest request) throws NoSuchMethodException {
         request.verify();

@@ -2,7 +2,6 @@ package cccc.vlm.service;
 
 import cccc.vlm.entity.User;
 import cccc.vlm.payload.request.InsertUserRequest;
-import cccc.vlm.payload.request.UpdateEquipmentRequest;
 import cccc.vlm.payload.request.UpdateUserRequest;
 import cccc.vlm.payload.response.UserResponse;
 import cccc.vlm.repository.UserRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

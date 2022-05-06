@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -37,34 +38,38 @@ public class Equipment{
     private int qty;
 
     @Column(nullable = false)
-    private int maxUseQty;
-
-    @Column(nullable = true)
-    private int minUseQty;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
+    @ColumnDefault("0")
+    private int useQty;
 
     @Column(nullable = false)
     @ColumnDefault("1")
     private int createdId;
 
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
     @Builder(builderMethodName = "byInsertEquipmentBuilder")
-    public Equipment(String name, Integer category, String description, Integer qty, Integer maxUseQty, Integer minUseQty) {
+    public Equipment(String name, Integer category, String description, Integer qty) {
         this.name = name;
         this.category = category;
         this.description = description;
         this.qty = qty;
         this.status = 1;
-        // 선택사항
-        this.maxUseQty = maxUseQty;
-        if (maxUseQty == null) {
-            this.maxUseQty = qty;
+    }
+
+    public void updateUseQty(int useQty) {
+        this.useQty = useQty;
+    }
+
+    public boolean canUseQty(int applyQty) {
+        int ableQty = this.qty - this.useQty;
+        if (ableQty - applyQty >= 0) {
+            this.useQty = (this.useQty + applyQty);
+            return true;
         }
-        // 선택사항
-        this.minUseQty = minUseQty;
-        if (minUseQty == null) {
-            this.minUseQty = qty;
-        }
+        return false;
     }
 }

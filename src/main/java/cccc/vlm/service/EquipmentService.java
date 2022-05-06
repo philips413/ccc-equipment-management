@@ -6,7 +6,6 @@ import cccc.vlm.payload.request.InsertEquipmentRequest;
 import cccc.vlm.payload.request.UpdateEquipmentRequest;
 import cccc.vlm.payload.response.EquipmentResponse;
 import cccc.vlm.repository.EquipmentRepository;
-import org.hibernate.persister.spi.UnknownPersisterException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +30,6 @@ public class EquipmentService {
                 .category(request.getCategory())
                 .description(request.getDescription())
                 .qty(request.getQty())
-                .maxUseQty(request.getMaxUseQty())
-                .minUseQty(request.getMinUseQty())
                 .build();
         Equipment saveEquipment = equipmentRepository.save(equipment);
         EquipmentResponse response = modelMapper.map(saveEquipment, EquipmentResponse.class);
@@ -46,6 +43,10 @@ public class EquipmentService {
                 .map(item -> modelMapper.map(item, EquipmentResponse.class))
                 .collect(Collectors.toList());
     }
+    @Transactional
+    public List<EquipmentResponse> getCurrentList() {
+        return null;
+    }
 
     @Transactional
     public EquipmentResponse updateEquipment(Integer equipmentId, UpdateEquipmentRequest request) throws NoSuchMethodException {
@@ -55,8 +56,6 @@ public class EquipmentService {
         equipment.setCategory(request.getCategory());
         equipment.setDescription(request.getDescription());
         equipment.setQty(request.getQty());
-        equipment.setMaxUseQty(request.getMaxUseQty());
-        equipment.setMinUseQty(request.getMinUseQty());
 
         Equipment responseEquipment = equipmentRepository.save(equipment);
 
