@@ -30,7 +30,11 @@ public class EquipmentManageServiceTest {
     private final static int USER_ID = 1;
     private final static int CATEGORY = 1;
 
+    // 반출신청 장비
     private Equipment EQUIP;
+
+    // 반납신처 장비
+    private String equipmentSerialId;
 
     @BeforeEach
     public void beforeTestCode() {
@@ -38,14 +42,14 @@ public class EquipmentManageServiceTest {
         Equipment equipment1 = Equipment.byInsertEquipmentBuilder()
                 .name("장비1")
                 .category(CATEGORY)
-                .qty(1)
+                .qty(10)
                 .description("장비입니다.")
                 .build();
 
         Equipment equipment2 = Equipment.byInsertEquipmentBuilder()
                 .name("장비2")
                 .category(CATEGORY)
-                .qty(2)
+                .qty(6)
                 .description("장비입니다.")
                 .build();
         equipmentRepository.save(equipment1);
@@ -56,7 +60,7 @@ public class EquipmentManageServiceTest {
     }
 
     @Test
-    public void 장비_반출_테스트() {
+    public void 장비_반출_테스트1() {
         // given
         // 1. 반출수량과 반출정보를 입력받는다.
         ApplyEquipmentRequest applyEquipment = ApplyEquipmentRequest.builder()
@@ -100,6 +104,17 @@ public class EquipmentManageServiceTest {
 
         // then
         Assertions.assertEquals(resultEquipment.getUseQty(), applyEquipment.getQty());
+    }
+
+    @Test
+    public void 장비_반납_로직() {
+        // 이전 시나리오: 6개 장비중에 2개를 빌린 상황
+        // given
+
+
+        // when
+
+        // then
     }
 
 }
